@@ -1,0 +1,57 @@
+[
+    {
+        "id": "kingcombo",
+        "name": "Кинг Комбо",
+        "image": "kingcombo.webp"
+    },
+    {
+        "id": "burgers",
+        "name": "Бургеры",
+        "image": "burger.webp"
+    },
+    {
+        "id": "snacks",
+        "name": "Закуски",
+        "image": "snacks.webp"
+    },
+    {
+        "id": "drinks",
+        "name": "Напитки",
+        "image": "drinks.webp"
+    },
+    {
+        "id": "desserts",
+        "name": "Дессерты",
+        "image": "desserts.webp"
+    },
+    {
+        "id": "cocktails",
+        "name": "Молочные коктейли",
+        "image": "cocktail.webp"
+    },
+    {
+        "id": "rolls",
+        "name": "Роллы",
+        "image": "roll.webp"
+    },
+    {
+        "id": "shrimp",
+        "name": "Креветки",
+        "image": "shrimp.webp"
+    },
+    {
+        "id": "sauces",
+        "name": "Соусы",
+        "image": "sauces.webp"
+    },
+    {
+        "id": "childish",
+        "name": "Детское",
+        "image": "childish.webp"
+    },
+    {
+        "id": "others",
+        "name": "Остальное",
+        "image": "others.webp"
+    }
+]
