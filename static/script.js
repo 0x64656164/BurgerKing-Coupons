@@ -249,7 +249,7 @@ function updateHighlight(index) {
 function isSectionMajorityVisible(section) {
     const rect = section.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+    const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0) - 100;
     
     // Секция активна, если видно больше половины экрана
     return visibleHeight > windowHeight / 2;
