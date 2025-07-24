@@ -251,8 +251,8 @@ function isSectionMajorityVisible(section) {
     const windowHeight = window.innerHeight;
     const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0) - 100;
     
-    // Секция активна, если видно больше половины экрана
-    return visibleHeight > windowHeight / 2;
+    // Секция активна, если видно больше половины экрана ИЛИ больше половины секции
+    return visibleHeight > Math.min(section.offsetHeight / 2, windowHeight / 2);
 }
 
 function updateActiveCategoryOnScroll() {
