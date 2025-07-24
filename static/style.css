@@ -1,0 +1,360 @@
+@font-face {
+    font-family: 'Flame';
+    src: local('Flame Regular'), local('Flame-Regular'),
+         url('Flame-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Flame';
+    src: local('Flame Bold'), local('Flame-Bold'),
+         url('Flame-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Применяем шрифт ко всем элементам */
+body, button, input, textarea {
+    font-family: 'Flame', Arial, sans-serif;
+}
+
+/* Убираем подсветку при нажатии для всех интерактивных элементов */
+.carousel-item, 
+.coupon-card, 
+.modal-content button {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    outline: none;
+    user-select: none;
+}
+
+/* Для кнопок в модальном окне */
+.modal-content button {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Убираем выделение при клике на карточки */
+.coupon-card:active, 
+.coupon-card:focus {
+    outline: none;
+}
+
+/* Для элементов карусели */
+.carousel-item:active, 
+.carousel-item:focus {
+    outline: none;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f6e8d5;
+    color: #4a2e0d;
+    line-height: 1.4;
+    scroll-behavior: smooth;
+}
+
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #512314;
+}
+
+header {
+    background: #552c10;
+    color: #fff;
+    text-align: center;
+    padding: 0.8em 0;
+}
+
+header h1 {
+    font-size: 1.5em;
+}
+
+.banner {
+    background: #d8411f;
+    color: white;
+    text-align: center;
+    padding: 0.4em 0;
+    font-size: 0.9em;
+}
+
+.carousel {
+    background: #f9f1e4;
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    padding: 0.5em;
+    gap: 0.7em; /* Увеличиваем промежуток между элементами */
+    scroll-behavior: smooth;
+    border-bottom: 1px solid #e0d2b8;
+}
+
+.carousel-item {
+    flex: 0 0 auto; /* Важно для динамической ширины */
+    text-align: center;
+    padding: 0.5em 1em; /* Увеличиваем горизонтальные отступы */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    min-width: min-content; /* Минимальная ширина по содержимому */
+    white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+.highlight {
+    position: absolute;
+    height: calc(100% - 1em);
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    top: 0.5em;
+    z-index: 0;
+}
+
+.carousel-item img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel-item p {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    font-weight: normal;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 7em;
+}
+
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+.carousel-item.active {
+    /* Убрали стили, так как теперь подсветка снизу */
+}
+
+main {
+    padding: 0 1em;
+}
+
+.coupon-section {
+    scroll-margin-top: 120px;
+    padding-top: 1em;
+}
+
+.coupon-section h2 {
+    font-size: 1.3em;
+    margin-bottom: 0.8em;
+}
+
+.coupon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+.coupon-card {
+    background: #FDF6EC;
+    width: calc(50% - 0.5em);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0.5em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.coupon-card:hover {
+    transform: scale(1.02);
+}
+
+.coupon-card img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.coupon-card h3 {
+    font-size: 0.9em;
+    margin: 0.5em 0 0.3em;
+    font-weight: normal; /* Flame-Bold для заголовков карточек */
+    /* Новые стили для обрезки текста */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Ограничиваем 2 строками */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.4em; /* Высота двух строк */
+    line-height: 1.2em;
+}
+
+/* Для однострочного варианта (если нужно) */
+.coupon-card .single-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.coupon-card .price {
+    font-weight: normal; /* Flame-Regular для цены */
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.coupon-card .price .current {
+    font-weight: bold; /* Жирная текущая цена */
+}
+
+.coupon-card .price s {
+    color: #999;
+    font-weight: normal; /* Обычный шрифт для старой цены */
+    margin-left: 0.3em;
+}
+
+.empty {
+    color: #888;
+    font-style: italic;
+    font-size: 0.9em;
+    padding: 0.5em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 1em;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    animation: pop 0.3s ease;
+    overflow: auto;
+    max-height: 90vh;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.modal-content h3 {
+    margin-top: 1em;
+    font-size: 1.2em;
+    font-weight: bold; /* Используем Flame-Bold */
+}
+
+.modal-content p {
+    margin-top: 0.5em;
+    font-size: 0.95em;
+    white-space: pre-line; /* Это ключевое свойство */
+    word-break: break-word;
+    line-height: 1.5;
+    padding: 0 0.5em;
+}
+
+.modal-content .price {
+    font-weight: normal; /* Используем Flame-Regular */
+    font-size: 1.1em;
+    margin: 0.5em 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.modal-content .price .current {
+    font-weight: bold; /* Делаем текущую цену жирной */
+    color: #4a2e0d;
+}
+
+.modal-content .price .old {
+    color: #999;
+    text-decoration: line-through;
+    font-weight: normal; /* Обычный шрифт для старой цены */
+    font-size: 0.9em;
+}
+
+.modal-content button {
+    background: #d8411f;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    margin: 0.3em;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Flame', Arial, sans-serif; /* Применяем шрифт Flame */
+    font-weight: normal; /* Регулярное начертание */
+    transition: all 0.2s ease;
+}
+
+.modal-content button:hover {
+    background: #c2381b;
+    transform: translateY(-2px);
+}
+
+.modal-content button.copied {
+    background: #4CAF50;
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.close {
+    position: absolute;
+    right: 0.8em;
+    top: 0.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #444;
+    cursor: pointer;
+}
+
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media (min-width: 600px) {
+    .coupon-card {
+        width: calc(33.333% - 0.66em);
+    }
+}
