@@ -273,7 +273,7 @@ main {
 }
 
 .modal-content h3 {
-    margin-top: 1em;
+    margin-top: 0.3em;
     font-size: 1.2em;
     font-weight: bold; /* Используем Flame-Bold */
 }
