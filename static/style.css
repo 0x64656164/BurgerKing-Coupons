@@ -172,8 +172,21 @@ main {
 .coupon-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 1em;
-    justify-content: space-between;
+}
+
+@media (min-width: 400px) {
+    .coupon-card {
+        padding: 0 1em;
+        flex-basis: calc(33.333% - 1em); /* 3 колонки */
+    }
+}
+
+@media (min-width: 768px) {
+    .coupon-card {
+        flex-basis: calc(25% - 1em); /* 4 колонки */
+    }
 }
 
 .coupon-card {
