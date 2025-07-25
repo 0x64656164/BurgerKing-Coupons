@@ -205,6 +205,9 @@ function copyCode(btn, code) {
         .catch(err => {
             console.error('Ошибка копирования:', err);
             btn.textContent = 'Ошибка!';
+            setTimeout(() => {
+                btn.textContent = code;
+            }, 1500);
         });
 }
 
