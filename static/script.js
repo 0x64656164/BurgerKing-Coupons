@@ -110,11 +110,19 @@ function renderCoupons() {
             card.dataset.old = item.old_price;
             card.dataset.codes = item.codes.join(',');
             
-            card.innerHTML = `
-                <img src="${imagePath}" alt="${item.title}" loading="lazy">
-                <h3>${item.title}</h3>
-                <div class="price">${item.price} <s>${item.old_price}</s></div>
-            `;
+            if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
+                card.innerHTML = `
+                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
+                    <h3>${item.title}</h3>
+                    <div class="price">${item.price}</div>
+                `;
+            } else {
+                card.innerHTML = `
+                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
+                    <h3>${item.title}</h3>
+                    <div class="price">${item.price} <s>${item.old_price}</s></div>
+                `;
+            };
             
             couponList.appendChild(card);
         });
@@ -171,7 +179,12 @@ function handleCouponClick(card) {
     document.getElementById('modalTitle').textContent = card.dataset.title;
     
     const description = card.dataset.description.replace(/\\n/g, '\n');
-    document.getElementById('modalDesc').textContent = description;
+    
+    if (description == ''){
+        document.getElementById('modalDesc').innerHTML = `<i>Информации нет...</i>`;
+    } else {
+        document.getElementById('modalDesc').textContent = description;
+    }
     
     document.getElementById('modalPrice').innerHTML = `
         <span class="current">${card.dataset.price}</span>
