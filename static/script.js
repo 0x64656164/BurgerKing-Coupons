@@ -186,10 +186,16 @@ function handleCouponClick(card) {
         document.getElementById('modalDesc').textContent = description;
     }
     
-    document.getElementById('modalPrice').innerHTML = `
+    if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
+        document.getElementById('modalPrice').innerHTML = `
+        <span class="current">${card.dataset.price}</span>
+    `;
+    } else {
+        document.getElementById('modalPrice').innerHTML = `
         <span class="current">${card.dataset.price}</span>
         <span class="old">${card.dataset.old}</span>
     `;
+    };
     
     // Генерация кнопок с кодами
     const codesDiv = document.getElementById('modalCodes');
