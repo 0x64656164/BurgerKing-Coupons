@@ -195,20 +195,51 @@ function closeModal() {
 }
 
 function copyCode(btn, code) {
-    navigator.clipboard.writeText(code)
-        .then(() => {
-            btn.textContent = 'Скопировано!';
-            setTimeout(() => {
-                btn.textContent = code;
-            }, 1500);
-        })
-        .catch(err => {
-            console.error('Ошибка копирования:', err);
-            btn.textContent = 'Ошибка!';
-            setTimeout(() => {
-                btn.textContent = code;
-            }, 1500);
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(code).then(() => {
+            showCopied(btn, code);
+        }).catch(err => {
+            console.warn('Clipboard API не сработал, пробуем fallback:', err);
+            fallbackCopyText(btn, code);
         });
+    } else {
+        fallbackCopyText(btn, code);
+    }
+}
+
+function fallbackCopyText(btn, code) {
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    textarea.style.position = 'fixed';
+    textarea.style.top = '-9999px';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopied(btn, code);
+        } else {
+            throw new Error('execCommand вернул false');
+        }
+    } catch (err) {
+        console.error('Ошибка копирования (fallback):', err);
+        btn.textContent = 'Ошибка!';
+        setTimeout(() => {
+            btn.textContent = code;
+        }, 1500);
+    }
+
+    document.body.removeChild(textarea);
+}
+
+function showCopied(btn, original) {
+    btn.textContent = 'Скопировано!';
+    setTimeout(() => {
+        btn.textContent = original;
+    }, 1500);
 }
 
 // ========================
