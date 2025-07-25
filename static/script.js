@@ -214,6 +214,8 @@ function fallbackCopyText(btn, code) {
         alert("Скопируйте вручную:\n\n" + code);
         return;
     }
+    alert("Скопируйте вручную:\n\n" + code);
+    return;
 
     // Старый fallback через textarea
     const textarea = document.createElement('textarea');
