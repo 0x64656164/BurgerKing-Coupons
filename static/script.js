@@ -208,6 +208,14 @@ function copyCode(btn, code) {
 }
 
 function fallbackCopyText(btn, code) {
+    const isTelegram = /tg:\/\/|telegram/i.test(navigator.userAgent);
+    if (isTelegram && typeof Telegram === 'undefined') {
+        // Telegram browser без WebApp API — показываем модальное окно
+        alert("Скопируйте вручную:\n\n" + code);
+        return;
+    }
+
+    // Старый fallback через textarea
     const textarea = document.createElement('textarea');
     textarea.value = code;
     textarea.style.position = 'fixed';
