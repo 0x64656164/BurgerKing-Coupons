@@ -121,100 +121,6 @@
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/99c4b380864d0f0b8e1188a60c4ea7e8.png"
         }
     ],
-    "desserts": [
-        {
-            "title": "Пирожок с вишней за 49,99",
-            "description": "🔶 Состовляющие:\n➖ Пирожок с вишней",
-            "price": "49.99 ₽",
-            "old_price": "129.99 ₽",
-            "codes": [
-                "5558823"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/a76d6c4fdd383d6b089a240aa68efe96.png"
-        },
-        {
-            "title": "Айс Твист за 59,99",
-            "description": "",
-            "price": "89.98 ₽",
-            "old_price": "",
-            "codes": [
-                "5558902"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/010ae4e932ef0f7047198b0c26f09ad1.png"
-        },
-        {
-            "title": "Пирожок за 89,99",
-            "description": "🔶 Состовляющие:\n➖ Пирожок с вишней",
-            "price": "89.99 ₽",
-            "old_price": "129.99 ₽",
-            "codes": [
-                "5560227"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/cc63e118d7c028163ddd81eebf902b3d.png"
-        },
-        {
-            "title": "Горячий Брауни со скидкой",
-            "description": "🔶 Состовляющие:\n➖ Горячий Брауни",
-            "price": "99.99 ₽",
-            "old_price": "144.99 ₽",
-            "codes": [
-                "5558819"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/31ed5e97013a26d0a440ff6473ce631f.png"
-        },
-        {
-            "title": "Айс Твист за 99,99",
-            "description": "",
-            "price": "129.98 ₽",
-            "old_price": "",
-            "codes": [
-                "5560063"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/05a8bfb56b4b6586c063546e0a31b5af.png"
-        },
-        {
-            "title": "Горячий Брауни и Кофе со скидкой",
-            "description": "🔶 Состовляющие:\n➖ Горячий Брауни\n➖ Капучино малый 0,2л\n✴️ Сытная замена:\n➖ Латте малый 0,2л",
-            "price": "149.98 ₽",
-            "old_price": "244.98 ₽",
-            "codes": [
-                "5558819",
-                "79890"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/bdacc8ce085bbb0d4cd1b94da25500e8.png"
-        },
-        {
-            "title": "Кофе + Десерт всего за 199,99",
-            "description": "🔶 Состовляющие:\n➖ Капучино большой 0,5л\n➖ Пирожок с вишней\n✴️ Сытная замена:\n➖ Латте большой 0,5л",
-            "price": "149.98 ₽",
-            "old_price": "329.98 ₽",
-            "codes": [
-                "90372",
-                "5558823"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/43878839472e5a79d3118e0907ff8038.png"
-        },
-        {
-            "title": "Айс Твист со скидкой",
-            "description": "🔶 Состовляющие:\n➖ M&M’S Айс Твист Клубничный\n✴️ Сытная замена:\n➖ M&M’S Айс Твист Шоколадный",
-            "price": "159.99 ₽",
-            "old_price": "239.99 ₽",
-            "codes": [
-                "5560657"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/2ad9e49262099345154dfdbd1ab2b3a1.png"
-        },
-        {
-            "title": "2 Сандэй Манго-Маракуйя за 199,99",
-            "description": "🔶 Состовляющие:\n➖ Сандэй Манго-Маракуйя x2",
-            "price": "199.99 ₽",
-            "old_price": "339.98 ₽",
-            "codes": [
-                "5560345"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/027b37aea141fc3608a7edc79acc7b44.png"
-        }
-    ],
     "kingcombo": [
         {
             "title": "Комбо с Чизбургером за 199,99",
@@ -582,9 +488,9 @@
         },
         {
             "title": "Цезарь ролл + Шейк Манго-Маракуйя + Кинг Фри",
-            "description": "",
+            "description": "✴️ Сытная замена:\n➖ Острый Воппер Ролл\n➖ Наггетсы (12 шт.)",
             "price": "419.99 ₽",
-            "old_price": "",
+            "old_price": "729.97 ₽",
             "codes": [
                 "5560346"
             ],
@@ -681,6 +587,100 @@
                 "5559351"
             ],
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/548e3863c7a456673ef8f8bd1868b4cc.png"
+        }
+    ],
+    "desserts": [
+        {
+            "title": "Пирожок с вишней за 49,99",
+            "description": "🔶 Состовляющие:\n➖ Пирожок с вишней",
+            "price": "49.99 ₽",
+            "old_price": "129.99 ₽",
+            "codes": [
+                "5558823"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/a76d6c4fdd383d6b089a240aa68efe96.png"
+        },
+        {
+            "title": "Айс Твист за 59,99",
+            "description": "✴️ Сытная замена:\n➖ M&M’S Айс Твист Шоколадный",
+            "price": "89.98 ₽",
+            "old_price": "239.99 ₽",
+            "codes": [
+                "5558902"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/010ae4e932ef0f7047198b0c26f09ad1.png"
+        },
+        {
+            "title": "Пирожок за 89,99",
+            "description": "🔶 Состовляющие:\n➖ Пирожок с вишней",
+            "price": "89.99 ₽",
+            "old_price": "129.99 ₽",
+            "codes": [
+                "5560227"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/cc63e118d7c028163ddd81eebf902b3d.png"
+        },
+        {
+            "title": "Горячий Брауни со скидкой",
+            "description": "🔶 Состовляющие:\n➖ Горячий Брауни",
+            "price": "99.99 ₽",
+            "old_price": "144.99 ₽",
+            "codes": [
+                "5558819"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/31ed5e97013a26d0a440ff6473ce631f.png"
+        },
+        {
+            "title": "Айс Твист за 99,99",
+            "description": "✴️ Сытная замена:\n➖ M&M’S Айс Твист Шоколадный",
+            "price": "129.98 ₽",
+            "old_price": "239.99 ₽",
+            "codes": [
+                "5560063"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/05a8bfb56b4b6586c063546e0a31b5af.png"
+        },
+        {
+            "title": "Горячий Брауни и Кофе со скидкой",
+            "description": "🔶 Состовляющие:\n➖ Горячий Брауни\n➖ Капучино малый 0,2л\n✴️ Сытная замена:\n➖ Латте малый 0,2л",
+            "price": "149.98 ₽",
+            "old_price": "244.98 ₽",
+            "codes": [
+                "5558819",
+                "79890"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/bdacc8ce085bbb0d4cd1b94da25500e8.png"
+        },
+        {
+            "title": "Кофе + Десерт всего за 199,99",
+            "description": "🔶 Состовляющие:\n➖ Капучино большой 0,5л\n➖ Пирожок с вишней\n✴️ Сытная замена:\n➖ Латте большой 0,5л",
+            "price": "149.98 ₽",
+            "old_price": "329.98 ₽",
+            "codes": [
+                "90372",
+                "5558823"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/43878839472e5a79d3118e0907ff8038.png"
+        },
+        {
+            "title": "Айс Твист со скидкой",
+            "description": "🔶 Состовляющие:\n➖ M&M’S Айс Твист Клубничный\n✴️ Сытная замена:\n➖ M&M’S Айс Твист Шоколадный",
+            "price": "159.99 ₽",
+            "old_price": "239.99 ₽",
+            "codes": [
+                "5560657"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/2ad9e49262099345154dfdbd1ab2b3a1.png"
+        },
+        {
+            "title": "2 Сандэй Манго-Маракуйя за 199,99",
+            "description": "🔶 Состовляющие:\n➖ Сандэй Манго-Маракуйя x2",
+            "price": "199.99 ₽",
+            "old_price": "339.98 ₽",
+            "codes": [
+                "5560345"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/027b37aea141fc3608a7edc79acc7b44.png"
         }
     ],
     "cocktails": [
