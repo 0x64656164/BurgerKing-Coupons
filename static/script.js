@@ -126,8 +126,8 @@ function renderCoupons() {
                 card.innerHTML = `
                     <img src="${imagePath}" alt="${item.title}" loading="lazy">
                     <h3>${item.title}</h3>
-                    <div class="price">${item.price} <s>от ${item.old_price}</s></div>
-                `;
+                    <div class="price">${item.price} <s>${item.old_price}</s></div>
+                `; // Удалена приставка "от" из за малого места
             };
             
             couponList.appendChild(card);
