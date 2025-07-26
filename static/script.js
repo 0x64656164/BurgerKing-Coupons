@@ -110,7 +110,13 @@ function renderCoupons() {
             card.dataset.old = item.old_price;
             card.dataset.codes = item.codes.join(',');
             
-            if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
+            if ((card.dataset.price && card.dataset.old) && (card.dataset.price === card.dataset.old)) {
+                card.innerHTML = `
+                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
+                    <h3>${item.title}</h3>
+                    <div class="price">${item.price}</div>
+                `;
+            } else if (card.dataset.old === '') {
                 card.innerHTML = `
                     <img src="${imagePath}" alt="${item.title}" loading="lazy">
                     <h3>${item.title}</h3>
@@ -120,7 +126,7 @@ function renderCoupons() {
                 card.innerHTML = `
                     <img src="${imagePath}" alt="${item.title}" loading="lazy">
                     <h3>${item.title}</h3>
-                    <div class="price">${item.price} <s>${item.old_price}</s></div>
+                    <div class="price">${item.price} <s>от ${item.old_price}</s></div>
                 `;
             };
             
@@ -180,22 +186,25 @@ function handleCouponClick(card) {
     
     const description = card.dataset.description.replace(/\\n/g, '\n');
     
-    if (description == ''){
+    if (description === ''){
         document.getElementById('modalDesc').innerHTML = `<i>Информации нет...</i>`;
     } else {
         document.getElementById('modalDesc').textContent = description;
     }
     
-    if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
+    if ((card.dataset.price && card.dataset.old) && (card.dataset.price === card.dataset.old)) {
         document.getElementById('modalPrice').innerHTML = `
         <span class="current">${card.dataset.price}</span>
     `;
-    } else {
+    } else if (card.dataset.old === '') {
         document.getElementById('modalPrice').innerHTML = `
         <span class="current">${card.dataset.price}</span>
-        <span class="old">${card.dataset.old}</span>
     `;
-    };
+    }  else {
+        document.getElementById('modalPrice').innerHTML = `
+        <span class="current">${card.dataset.price}</span>
+        <span class="old">от ${card.dataset.old}</span>
+    `;
     
     // Генерация кнопок с кодами
     const codesDiv = document.getElementById('modalCodes');
