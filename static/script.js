@@ -110,7 +110,7 @@ function renderCoupons() {
             card.dataset.old = item.old_price;
             card.dataset.codes = item.codes.join(',');
             
-            if ((card.dataset.price && card.dataset.old) && (card.dataset.price === card.dataset.old)) {
+            if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
                 card.innerHTML = `
                     <img src="${imagePath}" alt="${item.title}" loading="lazy">
                     <h3>${item.title}</h3>
@@ -185,8 +185,7 @@ function handleCouponClick(card) {
     document.getElementById('modalTitle').textContent = card.dataset.title;
     
     const description = card.dataset.description.replace(/\\n/g, '\n');
-    
-    if (description === ''){
+    if (description == ''){
         document.getElementById('modalDesc').innerHTML = `<i>Информации нет...</i>`;
     } else {
         document.getElementById('modalDesc').textContent = description;
@@ -205,6 +204,7 @@ function handleCouponClick(card) {
         <span class="current">${card.dataset.price}</span>
         <span class="old">от ${card.dataset.old}</span>
     `;
+    };
     
     // Генерация кнопок с кодами
     const codesDiv = document.getElementById('modalCodes');
@@ -222,6 +222,7 @@ function closeModal() {
     document.getElementById('couponModal').style.display = 'none';
 }
 
+// Функция копирования
 function copyCode(btn, code) {
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(code).then(() => {
@@ -270,6 +271,7 @@ function showCopied(btn, original) {
     }, 1500);
 }
 
+
 // ========================
 // Функции скролла и подсветки
 // ========================
@@ -313,7 +315,7 @@ function isSectionMajorityVisible(section) {
     const windowHeight = window.innerHeight;
     const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0) - 100;
     
-    // Секция активна, если видно больше половины экрана ИЛИ больше половины секции
+    // Секция активна, если видно больше половины экрана
     return visibleHeight > Math.min(section.offsetHeight / 2, windowHeight / 2);
 }
 
