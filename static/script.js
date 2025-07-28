@@ -19,6 +19,16 @@ async function loadData() {
         categories = await categoriesRes.json();
         coupons = await couponsRes.json();
         
+        // Сортируем купоны в каждой категории по цене (от дешевых к дорогим)
+        for (const category in coupons) {
+            coupons[category].sort((a, b) => {
+                // Извлекаем число из строки с ценой (удаляем " ₽" и заменяем запятые на точки, если есть)
+                const priceA = parseFloat(a.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                const priceB = parseFloat(b.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                return priceA - priceB; // Сортировка по возрастанию
+            });
+        }
+        
         renderCategories();
         renderCoupons();
         initEventListeners();
@@ -127,7 +137,7 @@ function renderCoupons() {
                     <img src="${imagePath}" alt="${item.title}" loading="lazy">
                     <h3>${item.title}</h3>
                     <div class="price">${item.price} <s>${item.old_price}</s></div>
-                `; // Удалена приставка "от" из за малого места
+                `;
             };
             
             couponList.appendChild(card);
