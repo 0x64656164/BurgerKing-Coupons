@@ -172,40 +172,25 @@ main {
 .coupon-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
     justify-content: flex-start;
+    gap: 1em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 400px) {
     .coupon-card {
         padding: 0 1em;
-        flex-basis: calc(33.333% - 1em)
+        flex-basis: calc(33.333% - 1em); /* 3 колонки */
     }
 }
 
 @media (min-width: 768px) {
     .coupon-card {
-        padding: 0 1em;
-        flex-basis: calc(25% - 1em)
+        flex-basis: calc(25% - 1em); /* 4 колонки */
     }
 }
 
-@media (min-width: 1200px) {
-    .coupon-card {
-        padding: 0 1em;
-        flex-basis: calc(22% - 1em)
-    }
-}
-
-@media (min-width: 1700px) {
-    .coupon-card {
-        padding: 0 1em;
-        flex-basis: calc(15% - 1em)
-    }
-}
 .coupon-card {
     background: #FDF6EC;
-    min-width: 140px;
     width: calc(50% - 0.5em);
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -301,14 +286,14 @@ main {
 }
 
 .modal-content h3 {
-    margin-top: 0.3em;
+    margin-top: 1em;
     font-size: 1.2em;
     font-weight: bold; /* Используем Flame-Bold */
 }
 
 .modal-content p {
     margin-top: 0.5em;
-    font-size: 0.90em;
+    font-size: 0.95em;
     white-space: pre-line; /* Это ключевое свойство */
     word-break: break-word;
     line-height: 1.5;
