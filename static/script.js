@@ -226,6 +226,15 @@ function handleCouponClick(card) {
         btn.addEventListener('click', () => copyCode(btn, code));
         codesDiv.appendChild(btn);
     });
+    
+    const descContainer = document.querySelector('.description-container');
+    // Удаляем класс, если был добавлен ранее
+    descContainer.classList.remove('scrollable');
+    
+    // Проверяем, нужна ли прокрутка
+    if (descContainer.scrollHeight > descContainer.clientHeight) {
+        descContainer.classList.add('scrollable');
+    }
 }
 
 function closeModal() {
