@@ -86,66 +86,84 @@ function renderCategories() {
     });
 }
 
-// Рендер купонов
+
 function renderCoupons() {
     const main = document.querySelector('main');
     main.innerHTML = '';
-    
+
+    const svgPlaceholder = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 256" style="width:100%;height:auto;display:block;"><style>@font-face{font-family:'Flame';src:local('Flame Regular'),local('Flame-Regular'),url('Flame-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}.bg{fill:#f5ecdc;}.icon{fill:#e0cba8;}.text{font-family:'Flame',sans-serif;font-size:24px;fill:#ccb896;text-anchor:middle;}</style><rect width="100%" height="100%" class="bg" rx="16"/><g transform="translate(100,40)"><rect width="200" height="140" rx="12" class="icon"/><circle cx="48" cy="36" r="16" class="bg"/><path class="bg" d="M40 110 L80 70 L120 110 L160 80 L200 120 L200 140 L40 140 Z"/></g><text x="200" y="230" class="text">Съели не запечатлев...</text></svg>`;
+
     categories.forEach(category => {
         const categoryCoupons = coupons[category.id];
         if (!categoryCoupons || categoryCoupons.length === 0) return;
-        
+
         const section = document.createElement('section');
         section.className = 'coupon-section';
         section.id = category.id;
-        
+
         section.innerHTML = `
             <h2>${category.name}</h2>
             <div class="coupon-list"></div>
         `;
-        
+
         const couponList = section.querySelector('.coupon-list');
-        
+
         categoryCoupons.forEach(item => {
             const card = document.createElement('div');
             card.className = 'coupon-card';
-            
-            const imagePath = item.image.startsWith('http') ? 
+
+            const imagePath = item.image.startsWith('http') ?
                 item.image : `static/images/${item.image}`;
-            
+
             card.dataset.img = imagePath;
             card.dataset.title = item.title;
             card.dataset.description = item.description.replace(/\n/g, '\\n');
             card.dataset.price = item.price;
             card.dataset.old = item.old_price;
             card.dataset.codes = item.codes.join(',');
-            
-            if ((card.dataset.price && card.dataset.old) && (card.dataset.price == card.dataset.old)) {
-                card.innerHTML = `
-                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
-                    <h3>${item.title}</h3>
-                    <div class="price">${item.price}</div>
-                `;
-            } else if (card.dataset.old === '') {
-                card.innerHTML = `
-                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
-                    <h3>${item.title}</h3>
-                    <div class="price">${item.price}</div>
-                `;
+
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.loading = 'lazy';
+
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+
+            const price = document.createElement('div');
+            price.className = 'price';
+
+            if ((item.price && item.old_price) && (item.price == item.old_price)) {
+                price.textContent = item.price;
+            } else if (item.old_price === '') {
+                price.textContent = item.price;
             } else {
-                card.innerHTML = `
-                    <img src="${imagePath}" alt="${item.title}" loading="lazy">
-                    <h3>${item.title}</h3>
-                    <div class="price">${item.price} <s>${item.old_price}</s></div>
-                `;
+                price.innerHTML = `${item.price} <s>${item.old_price}</s>`;
+            }
+
+            // Проверка загрузки изображения
+            const testImg = new Image();
+            testImg.src = imagePath;
+            testImg.onload = () => {
+                card.prepend(img);
             };
-            
+            testImg.onerror = () => {
+                const temp = document.createElement('div');
+                temp.innerHTML = svgPlaceholder;
+                const svg = temp.firstChild;
+                //svg.classList.add('fade-in');
+                card.prepend(svg);
+            };
+
+            card.appendChild(title);
+            card.appendChild(price);
             couponList.appendChild(card);
         });
-        
+
         main.appendChild(section);
     });
 }
+
+
 
 // ========================
 // Обработчики событий
@@ -188,58 +206,105 @@ function handleCategoryClick(el, index) {
 
 function handleCouponClick(card) {
     const modal = document.getElementById('couponModal');
+    modal.classList.remove('hide'); // Убираем hide, если есть
     modal.style.display = 'flex';
-    
-    // Заполняем данные модального окна
-    document.getElementById('modalImage').src = card.dataset.img;
+    modal.classList.add('show'); // Триггерим анимацию появления
+    modal.querySelector('.modal-content').classList.add('animate-in'); // Анимация увеличения
+
+
+    const svgPlaceholder = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 256" style="width:100%;height:auto;display:block;"><style>@font-face{font-family:'Flame';src:local('Flame Regular'),local('Flame-Regular'),url('Flame-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}.bg{fill:#f5ecdc;}.icon{fill:#e0cba8;}.text{font-family:'Flame',sans-serif;font-size:24px;fill:#ccb896;text-anchor:middle;}</style><rect width="100%" height="100%" class="bg" rx="16"/><g transform="translate(100,40)"><rect width="200" height="140" rx="12" class="icon"/><circle cx="48" cy="36" r="16" class="bg"/><path class="bg" d="M40 110 L80 70 L120 110 L160 80 L200 120 L200 140 L40 140 Z"/></g><text x="200" y="230" class="text">Съели не запечатлев...</text></svg>`;
+
+    // Очистим содержимое контейнера изображения в модалке
+    const imageContainer = document.getElementById('modalImage');
+    imageContainer.innerHTML = ''; // modalImage должен быть <div>, не <img>
+
+    // Проверка загрузки изображения
+    const imagePath = card.dataset.img;
+    const testImg = new Image();
+    testImg.src = imagePath;
+
+    testImg.onload = () => {
+        const img = document.createElement('img');
+        img.src = imagePath;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.style.display = 'block';
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(img);
+    };
+
+    testImg.onerror = () => {
+        const temp = document.createElement('div');
+        temp.innerHTML = svgPlaceholder;
+        const svg = temp.firstChild;
+        svg.classList.add('fade-in');
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(svg);
+    };
+
+    // Заполнение текста
     document.getElementById('modalTitle').textContent = card.dataset.title;
-    
+
     const description = card.dataset.description.replace(/\\n/g, '\n');
-    if (description == ''){
+    if (description === '') {
         document.getElementById('modalDesc').innerHTML = `<i>Информации нет...</i>`;
     } else {
         document.getElementById('modalDesc').textContent = description;
     }
-    
+
+    // Цены
+    const priceBlock = document.getElementById('modalPrice');
     if ((card.dataset.price && card.dataset.old) && (card.dataset.price === card.dataset.old)) {
-        document.getElementById('modalPrice').innerHTML = `
-        <span class="current">${card.dataset.price}</span>
-    `;
+        priceBlock.innerHTML = `<span class="current">${card.dataset.price}</span>`;
     } else if (card.dataset.old === '') {
-        document.getElementById('modalPrice').innerHTML = `
-        <span class="current">${card.dataset.price}</span>
-    `;
-    }  else {
-        document.getElementById('modalPrice').innerHTML = `
-        <span class="current">${card.dataset.price}</span>
-        <span class="old">от ${card.dataset.old}</span>
-    `;
-    };
-    
-    // Генерация кнопок с кодами
+        priceBlock.innerHTML = `<span class="current">${card.dataset.price}</span>`;
+    } else {
+        priceBlock.innerHTML = `
+            <span class="current">${card.dataset.price}</span>
+            <span class="old">от ${card.dataset.old}</span>
+        `;
+    }
+
+    // Коды
     const codesDiv = document.getElementById('modalCodes');
     codesDiv.innerHTML = '';
-    
     card.dataset.codes.split(',').forEach(code => {
         const btn = document.createElement('button');
         btn.textContent = code;
         btn.addEventListener('click', () => copyCode(btn, code));
         codesDiv.appendChild(btn);
     });
-    
+
+    // Прокрутка описания
+    // Прокрутка описания — задержка нужна для корректной высоты после анимации
     const descContainer = document.querySelector('.description-container');
-    // Удаляем класс, если был добавлен ранее
     descContainer.classList.remove('scrollable');
     
-    // Проверяем, нужна ли прокрутка
-    if (descContainer.scrollHeight > descContainer.clientHeight) {
-        descContainer.classList.add('scrollable');
-    }
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            if (descContainer.scrollHeight > descContainer.clientHeight + 1) {
+                descContainer.classList.add('scrollable');
+            }
+        }, 10); // небольшая задержка на отрисовку
+    });
 }
 
 function closeModal() {
-    document.getElementById('couponModal').style.display = 'none';
+    const modal = document.getElementById('couponModal');
+    const modalContent = modal.querySelector('.modal-content');
+
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+    modalContent.classList.remove('animate-in');
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('hide');
+    }, 300); // Должно совпадать с CSS-анимацией
 }
+
 
 // Функция копирования
 function copyCode(btn, code) {
