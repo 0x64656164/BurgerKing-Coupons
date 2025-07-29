@@ -24,6 +24,7 @@ body, button, input, textarea {
 /* Убираем подсветку при нажатии для всех интерактивных элементов */
 .carousel-item, 
 .coupon-card, 
+.close,
 .modal-content button {
     -webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
@@ -174,6 +175,7 @@ main {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1em;
+    padding-bottom: 1em;
 }
 
 @media (min-width: 400px) {
@@ -255,6 +257,11 @@ main {
     padding: 0.5em;
 }
 
+#modalImage svg {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -266,9 +273,29 @@ main {
     justify-content: center;
     align-items: center;
     padding: 1em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
+.modal.show {
+    display: flex;
+    animation: fadeIn 0.3s forwards;
+}
+
+.modal.hide {
+    animation: fadeOut 0.3s forwards;
+    pointer-events: none;
+}
+
+.modal-content.animate-in {
+    animation: grow 0.3s ease forwards;
+    transform-origin: center;
+    opacity: 0;
+}
+
+
 .modal-content {
+    transition: max-height 0.3s ease, transform 0.3s ease;
     position: relative;
     background: #fff;
     padding: 1em;
@@ -424,4 +451,35 @@ main {
     .coupon-card {
         width: calc(33.333% - 0.66em);
     }
-} 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes grow {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeInSvg 0.3s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInSvg {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
