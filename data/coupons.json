@@ -501,6 +501,16 @@
                 "5559354"
             ],
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/99c4b380864d0f0b8e1188a60c4ea7e8.png"
+        },
+        {
+            "title": "Букет из закусок с соусами",
+            "description": "🔶 Состовляющие:\n➖ Кинг Букет «Снек-Микс»\n➖ Соус Сырный x2",
+            "price": "629.99 ₽",
+            "old_price": "779.97 ₽",
+            "codes": [
+                "5558490"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/47fc111027d1002b5b11f75605442855.png"
         }
     ],
     "burgers": [
@@ -873,16 +883,6 @@
                 "5559351"
             ],
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/548e3863c7a456673ef8f8bd1868b4cc.png"
-        },
-        {
-            "title": "Букет из закусок с соусами",
-            "description": "🔶 Состовляющие:\n➖ Кинг Букет «Снек-Микс»\n➖ Соус Сырный x2",
-            "price": "629.99 ₽",
-            "old_price": "779.97 ₽",
-            "codes": [
-                "5558490"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/47fc111027d1002b5b11f75605442855.png"
         }
     ],
     "cocktails": [
