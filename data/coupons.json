@@ -403,6 +403,16 @@
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/278e00d6a3246412451cbfa0eb21181e.png"
         },
         {
+            "title": "2 Кинг Фри Пармезан-Чеснок",
+            "description": "🔶 Состовляющие:\n➖ Кинг Фри Пармезан и Чеснок малый x2",
+            "price": "119.99 ₽",
+            "old_price": "239.98 ₽",
+            "codes": [
+                "5561580"
+            ],
+            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/1f8410df6a857d7ad9100d65d942aca8.png"
+        },
+        {
             "title": "Кинг Гоу за 129,99",
             "description": "🔶 Состовляющие:\n➖ Кинг Гоу Наггетсы",
             "price": "129.99 ₽",
@@ -451,16 +461,6 @@
                 "126290"
             ],
             "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/834a2567724c428b439c8008a39d0147.png"
-        },
-        {
-            "title": "2 закуски + 2 соуса",
-            "description": "🔶 Состовляющие:\n➖ Наггетсы (6 шт.)\n➖ Луковые Кольца (6 шт.)\n➖ Соус Сырный x2",
-            "price": "249.99 ₽",
-            "old_price": "374.96 ₽",
-            "codes": [
-                "5560225"
-            ],
-            "image": "https://orderapp-static.burgerkingrus.ru/x512/mobile_image/9e7f3f63937843f67bbac58d606b8e58.png"
         },
         {
             "title": "2 закуски + 2 соуса за 1 рубль",
